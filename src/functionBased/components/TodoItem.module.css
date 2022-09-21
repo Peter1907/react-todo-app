@@ -21,3 +21,13 @@
   width: 50px;
   margin: -10px 0 0 10px;
 }
+
+.item button:hover {
+  background-color: orangered;
+  color: #f1f3f4;
+  filter: drop-shadow(0 0 3px orange);
+}
+
+.item button:active {
+  transform: scale(0.95);
+}

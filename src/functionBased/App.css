@@ -63,3 +63,37 @@ body {
   outline: none;
   border: none;
 }
+
+.input-submit:hover {
+  color: orangered;
+  filter: drop-shadow(0 0 5px orange);
+}
+
+.input-submit:active {
+  transform: scale(1.05);
+}
+
+.active-link {
+  color: orangered;
+  text-decoration: underline;
+}
+
+.active-link:hover {
+  filter: drop-shadow(0 0 5px orange);
+}
+
+.navBar {
+  background-color: rgb(219, 219, 219);
+  padding: 20px 40px;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  align-items: baseline;
+}
+
+.navBar ul {
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+  margin-left: auto;
+}
