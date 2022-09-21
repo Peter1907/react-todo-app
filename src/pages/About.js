@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react';
 
 const About = () => {
   const style = {
@@ -9,6 +9,6 @@ const About = () => {
   return (
     <div style={style}>Hello from the about page!</div>
   );
-}
+};
 
-export default About
+export default About;

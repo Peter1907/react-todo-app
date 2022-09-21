@@ -1,41 +1,49 @@
-import React from "react"
+import React from 'react';
 
 class InputTodo extends React.PureComponent {
-  state = {
-    title: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: '',
+    };
+  }
 
   onChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   handleSubmit = (e) => {
+    const {title} = this.state;
+    const {addTodo} = this.props;
     e.preventDefault();
-    if (this.state.title.trim()) {
-      this.props.addTodo(this.state.title)
+    if (title.trim()) {
+      addTodo(title);
       this.setState({
-        title: "",
-      })
+        title: '',
+      });
     } else {
-      alert("Please write item")
+      alert('Please write item');
     }
   };
 
   render() {
+    const {title} = this.state;
     return (
       <form className="form-container" onSubmit={this.handleSubmit}>
         <input
           className="input-text"
-          type="text" placeholder="Add todo..."
-          value={this.state.title}
+          type="text"
+          placeholder="Add todo..."
+          value={title}
           name="title"
           onChange={this.onChange}
         />
-        <button className="input-submit">Submit</button>
+        <button type="submit" className="input-submit">Submit</button>
       </form>
-    )
+    );
   }
 }
-export default InputTodo
+
+export default InputTodo;

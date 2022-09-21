@@ -1,32 +1,36 @@
-import React from "react";
+import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import TodosList from './TodoList';
-import Header from "./Header";
-import InputTodo from "./InputTodo";
-import { v4 as uuidv4 } from "uuid";
+import Header from './Header';
+import InputTodo from './InputTodo';
 
 class TodoContainer extends React.Component {
-  state = {
-    todos: [],
-   };
+  constructor(props) {
+    super(props);
+    this.state = {
+     todos: [],
+    };
+  };
 
-   componentDidMount() {
-    const data = localStorage.getItem("todos")
-    const loadedTodos = JSON.parse(data)
+  componentDidMount() {
+    const data = localStorage.getItem('todos');
+    const loadedTodos = JSON.parse(data);
     if (loadedTodos) {
       this.setState({
-        todos: loadedTodos
-      })
+        todos: loadedTodos,
+      });
     }
-  };
+  }
 
   componentDidUpdate(prevState) {
-    if(prevState.todos !== this.state.todos) {
-      const data = JSON.stringify(this.state.todos)
-      localStorage.setItem("todos", data)
+    const {todos} = this.state;
+    if (prevState.todos !== todos) {
+      const data = JSON.stringify(todos);
+      localStorage.setItem('todos', data);
     }
-  };
+  }
 
-   handleChange = (id) => {
+  handleChange = (id) => {
     this.setState(prevState => {
       return {
         todos: prevState.todos.map(todo => {

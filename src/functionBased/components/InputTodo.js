@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import React, { useState } from 'react';
 
-const InputTodo = props => {
+const InputTodo = (props) => {
   const [inputText, setInputText] = useState({
-    title: "",
+    title: '',
   });
 
   const onChange = e => {
