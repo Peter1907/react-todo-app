@@ -1,41 +1,36 @@
-import React, { useState, useEffect } from "react";
-import styles from "./TodoItem.module.css";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import styles from './TodoItem.module.css';
 
 const TodoItem = (props) => {
   const [editing, setEditing] = useState(false);
 
-  useEffect(() => {
-    return () => {
-      console.log("Cleaning up...")
-    }
-  }, []);
-
   const handleEditing = () => {
-    setEditing(true)
+    setEditing(true);
   };
 
   const handleUpdatedDone = (event) => {
-    if (event.key === "Enter") {
-      setEditing(false)
+    if (event.key === 'Enter') {
+      setEditing(false);
     }
   };
 
   const completedStyle = {
-    fontStyle: "italic",
-    color: "#595959",
+    fontStyle: 'italic',
+    color: '#595959',
     opacity: 0.4,
-    textDecoration: "line-through",
+    textDecoration: 'line-through',
   };
 
-  const { completed, id, title } = props.todo;
+  const { handleChange, deleteTodo, setUpdate, todo } = props;
 
-  let viewMode = {};
-  let editMode = {};
+  const viewMode = {};
+  const editMode = {};
 
   if (editing) {
-    viewMode.display = "none"
+    viewMode.display = 'none';
   } else {
-    editMode.display = "none"
+    editMode.display = 'none';
   }
 
   return (
@@ -44,24 +39,31 @@ const TodoItem = (props) => {
         <input
           type="checkbox"
           className={styles.checkbox}
-          checked={completed}
-          onChange={() => props.handleChange(id)}
+          checked={todo.completed}
+          onChange={() => handleChange(todo.id)}
         />
-        <button onClick={() => props.deleteTodo(id)}>Delete</button>
-        <span style={completed ? completedStyle : null}>{title}</span>
+        <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+        <span style={todo.completed ? completedStyle : null}>{todo.title}</span>
       </div>
       <input
         type="text"
         style={editMode}
         className={styles.textInput}
-        value={title}
+        value={todo.title}
         onChange={(e) => {
-          props.setUpdate(e.target.value, id)
+          setUpdate(e.target.value, todo.id);
         }}
         onKeyDown={handleUpdatedDone}
       />
     </li>
-  )
-}
+  );
+};
 
-export default TodoItem
+TodoItem.propTypes = {
+  todo: PropTypes.instanceOf(Object).isRequired,
+  handleChange: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
+};
+
+export default TodoItem;
