@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class InputTodo extends React.PureComponent {
   constructor(props) {
@@ -15,8 +16,8 @@ class InputTodo extends React.PureComponent {
   };
 
   handleSubmit = (e) => {
-    const {title} = this.state;
-    const {addTodo} = this.props;
+    const { title } = this.state;
+    const { addTodo } = this.props;
     e.preventDefault();
     if (title.trim()) {
       addTodo(title);
@@ -24,12 +25,12 @@ class InputTodo extends React.PureComponent {
         title: '',
       });
     } else {
-      alert('Please write item');
+      alert('Please write item'); // eslint-disable-line no-alert
     }
   };
 
   render() {
-    const {title} = this.state;
+    const { title } = this.state;
     return (
       <form className="form-container" onSubmit={this.handleSubmit}>
         <input
@@ -44,6 +45,10 @@ class InputTodo extends React.PureComponent {
       </form>
     );
   }
+}
+
+InputTodo.protoTypes = {
+  addTodo: PropTypes.func.isRequired,
 }
 
 export default InputTodo;

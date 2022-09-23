@@ -8,9 +8,9 @@ class TodoContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-     todos: [],
+      todos: [],
     };
-  };
+  }
 
   componentDidMount() {
     const data = localStorage.getItem('todos');
@@ -23,7 +23,7 @@ class TodoContainer extends React.Component {
   }
 
   componentDidUpdate(prevState) {
-    const {todos} = this.state;
+    const { todos } = this.state;
     if (prevState.todos !== todos) {
       const data = JSON.stringify(todos);
       localStorage.setItem('todos', data);
@@ -31,7 +31,7 @@ class TodoContainer extends React.Component {
   }
 
   handleChange = (id) => {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       return {
         todos: prevState.todos.map(todo => {
           if (todo.id === id) {
@@ -46,7 +46,7 @@ class TodoContainer extends React.Component {
   delTodo = (id) => {
     this.setState({
       todos: [
-        ...this.state.todos.filter(todo => {
+        ...this.state.todos.filter((todo) => {
           return todo.id !== id;
         })
       ]

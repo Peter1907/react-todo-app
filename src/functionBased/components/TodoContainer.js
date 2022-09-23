@@ -5,7 +5,6 @@ import InputTodo from './InputTodo';
 import TodoList from './TodoList';
 
 const TodoContainer = () => {
-
   function getInitialTodos() {
     const temp = localStorage.getItem('todos');
     const savedTodos = JSON.parse(temp);
@@ -17,7 +16,7 @@ const TodoContainer = () => {
   useEffect(() => {
     const data = JSON.stringify(todos);
     localStorage.setItem('todos', data);
-  }, [todos])
+  }, [todos]);
 
   const addTodo = (title) => {
     const newTodo = {
@@ -49,15 +48,12 @@ const TodoContainer = () => {
           };
         }
         return todo;
-      })
-    );
+      }));
   };
 
   const delTodo = (id) => {
     setTodos([
-      ...todos.filter((todo) => {
-        return todo.id !== id
-      }),
+      ...todos.filter((todo) => todo.id !== id),
     ]);
   };
 

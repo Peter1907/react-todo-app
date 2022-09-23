@@ -22,7 +22,12 @@ const TodoItem = (props) => {
     textDecoration: 'line-through',
   };
 
-  const { handleChange, deleteTodo, setUpdate, todo } = props;
+  const {
+    handleChange,
+    deleteTodo,
+    setUpdate,
+    todo,
+  } = props;
 
   const viewMode = {};
   const editMode = {};
@@ -42,7 +47,7 @@ const TodoItem = (props) => {
           checked={todo.completed}
           onChange={() => handleChange(todo.id)}
         />
-        <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+        <button type="button" onClick={() => deleteTodo(todo.id)}>Delete</button>
         <span style={todo.completed ? completedStyle : null}>{todo.title}</span>
       </div>
       <input

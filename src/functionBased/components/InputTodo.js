@@ -23,7 +23,7 @@ const InputTodo = (props) => {
         title: '',
       });
     } else {
-      alert('Please write item');
+      alert('Please write item'); // eslint-disable-line no-alert
     }
   };
 
