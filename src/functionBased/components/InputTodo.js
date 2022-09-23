@@ -13,7 +13,7 @@ const InputTodo = (props) => {
     });
   };
 
-  const {addTodo} = props;
+  const { addTodo } = props;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,11 +30,11 @@ const InputTodo = (props) => {
   return (
     <form onSubmit={handleSubmit} className="form-container">
       <input
-        type='text'
-        className='input-text'
-        placeholder='Add todo...'
+        type="text"
+        className="input-text"
+        placeholder="Add todo..."
         value={inputText.title}
-        name='title'
+        name="title"
         onChange={onChange}
       />
       <button type="submit" className="input-submit">Submit</button>
@@ -44,6 +44,6 @@ const InputTodo = (props) => {
 
 InputTodo.propTypes = {
   addTodo: PropTypes.func.isRequired,
-}
+};
 
 export default InputTodo;

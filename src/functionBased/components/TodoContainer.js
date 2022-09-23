@@ -18,10 +18,10 @@ const TodoContainer = () => {
     localStorage.setItem('todos', data);
   }, [todos]);
 
-  const addTodo = (title) => {
+  const addTodo = (Title) => {
     const newTodo = {
       id: uuidv4(),
-      title: title,
+      title: Title,
       completed: false,
     };
     setTodos([...todos, newTodo]);
@@ -39,16 +39,15 @@ const TodoContainer = () => {
   };
 
   const handleChange = (id) => {
-    setTodos((prevState) =>
-      prevState.map((todo) => {
-        if (todo.id === id) {
-          return {
-            ...todo,
-            completed: !todo.completed,
-          };
-        }
-        return todo;
-      }));
+    setTodos((prevState) => prevState.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          completed: !todo.completed,
+        };
+      }
+      return todo;
+    }));
   };
 
   const delTodo = (id) => {

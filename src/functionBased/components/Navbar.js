@@ -20,17 +20,17 @@ const Navbar = () => {
       <h2>My todo list</h2>
       <ul>
         {links.map((link) => (
-            <li key={link.id}>
-              <NavLink
-                to={link.path}
-                className="active-link"
-                style={{
-                  textDecoration: 'none',
-                }}>
-                  {link.text}
-              </NavLink>
-            </li>
-          ))}
+          <li key={link.id}>
+            <NavLink
+              to={link.path}
+              className="active-link"
+              style={{
+                textDecoration: 'none',
+              }}>
+                {link.text}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );
